@@ -31,4 +31,5 @@ jobs:
           -r htmlextra,json \
           --reporter-htmlextra-export reports/reporte.html \
           --reporter-json-export reports/reporte.json \
-          --reporter-cli-no-fail
+          --reporter-cli-no-fail \
+          --verbose
