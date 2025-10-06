@@ -1,0 +1,33 @@
+name: Newman Tests CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  run-newman:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install Newman
+        run: npm install -g newman newman-reporter-htmlextra
+
+      - name: Run Postman Collection
+        run: |
+          mkdir -p reports
+          newman run collections/Postman Library API v2.postman_collection.json \
+            -r htmlextra,json \
+            --reporter-htmlextra-export reports/reporte.html \
+            --reporter-json-export reports/reporte.json
