@@ -27,11 +27,7 @@ jobs:
       - name: Ejecutar colección de Postman
         run: |
           mkdir -p reports      
-          newman run collections/postman_collection.json \
-          -r htmlextra,json \
-          --reporter-htmlextra-export reports/reporte.html \
-          --reporter-json-export reports/reporte.json \
-          --verbose > reports/newman.log 2>&1 || true
+          newman run collections/postman_collection.json -r htmlextra,json --reporter-htmlextra-export reports/reporte.html --reporter-json-export reports/reporte.json
 
       - name: Mostrar logs de Newman (opcional)
         run: cat reports/newman.log
