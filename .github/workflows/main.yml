@@ -27,7 +27,7 @@ jobs:
       - name: Run Postman Collection
         run: |
           mkdir -p reports
-          newman run postman-tests/collections/postman_collection.json \
+          newman run collections/postman_collection.json \
             -r htmlextra,json \
             --reporter-htmlextra-export reports/reporte.html \
             --reporter-json-export reports/reporte.json
