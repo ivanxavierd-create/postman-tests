@@ -25,9 +25,7 @@ jobs:
         run: npm install -g newman newman-reporter-htmlextra
 
       - name: Ejecutar colección de Postman
-        run: |
-          mkdir -p reports      
-          newman run collections/postman_collection.json -r htmlextra,json --reporter-htmlextra-export reports/reporte.html --reporter-json-export reports/reporte.json  --verbose
+        run: newman run collections/postman_collection.json 
 
       - name: Mostrar logs de Newman (opcional)
         run: cat reports/newman.log
